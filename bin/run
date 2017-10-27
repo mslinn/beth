@@ -45,7 +45,7 @@ else
 fi
 
 # Make bash/zsh compatible autocompletion script
-java -cp "picocli-1.0.0.jar;$JAR" picocli.AutoComplete -n "$ENTRY" "$ENTRY"
+java -cp "~/.ivy2/cache/info.picocli/picocli/jars/picocli-2.0.1.jar:$JAR" picocli.AutoComplete -fn="$ENTRY" "$ENTRY"
 source "${ENTRY}_completion"  # load autocompletion script
 
 # Run Beth with autocompletion enabled
