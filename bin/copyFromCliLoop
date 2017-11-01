@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cp -a /mnt/c/work/cli-loop/src/ .

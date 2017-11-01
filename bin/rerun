@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+sbt -jvm-debug 5005 "~runMain com.micronautics.Main"

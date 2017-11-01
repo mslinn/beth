@@ -11,7 +11,7 @@ Beth stands for "Better ETH"; it features auto-completion and colored help infor
 
 ## Running the Program
 The `bin/run` Bash script assembles this project into a fat jar and runs it.
-Sample usage, which runs the `Beth` entry point in `src/main/scala/Beth.scala`:
+Sample usage, which runs the `Beth` entry point in `src/main/scala/com.micronautics.Main.scala`:
 
 ```
 $ bin/run

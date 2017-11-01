@@ -36,14 +36,18 @@ javacOptions ++= Seq(
   "-g:vars"
 )
 
-resolvers ++= Seq(
-)
-
 libraryDependencies ++= Seq(
-  "info.picocli"      %  "picocli"     % "2.0.1" withSources(),
+  "io.circe"          %% "circe-config"     % "0.3.0" withSources(),
+  "io.circe"          %% "circe-generic"    % "0.8.0" withSources(),
+  "org.jline"         %  "jline"            % "3.5.1" withSources(),
+  "org.eclipse.jgit"  %  "org.eclipse.jgit" % "4.9.0.201710071750-r" withSources(),
+  "ch.qos.logback"    %  "logback-classic"  % "1.2.3",
+  //
   "org.scalatest"     %% "scalatest"   % "3.0.3" % Test withSources(),
   "junit"             %  "junit"       % "4.12"  % Test
 )
+
+fork in Test := true // https://stackoverflow.com/a/23575337/553865; forked tests prevents IDEA from attaching a debugger when launching tests via sbt tasks
 
 logLevel := Level.Warn
 
