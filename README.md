@@ -33,6 +33,58 @@ Both the `bin/run` and `bin/rerun` scripts enable remote debugging on port 5005,
 which is IntelliJ IDEA's default remote debugging port.
 The debug setup persists each time `rerun` relaunches the program.
 
+```
+1. Waiting for source changes... (press enter to interrupt)
+Micronautics Research Ethereum Shell v0.1.0
+Commands are: account, bindkey, exit/^d, help/?, javascript, password, set, testkey and tput
+cli-loop [master] shell> javascript
+Entering the javascript subshell. Press Control-d to exit the subshell.
+
+cli-loop [master] javascript> var x = 1
+cli-loop [master] javascript> x
+1
+
+cli-loop [master] javascript> var y = x * 33 + 2
+cli-loop [master] javascript> y
+35.0
+
+cli-loop [master] javascript> x
+1
+
+cli-loop [master] javascript>
+Returning to ethereum.
+
+Commands are: account, bindkey, exit/^d, help/?, javascript, password, set, testkey and tput
+cli-loop [master] shell>
+[success] Total time: 318 s, completed Nov 1, 2017 2:53:25 AM
+
+2. Waiting for source changes... (press enter to interrupt)
+Micronautics Research Ethereum Shell v0.1.0
+Commands are: account, bindkey, exit/^d, help/?, javascript, password, set, testkey and tput
+cli-loop [master] shell> javascript
+Entering the javascript sub-shell. Press Control-d to exit the sub-shell.
+
+cli-loop [master] javascript> var x = 1
+cli-loop [master] javascript> x
+1
+
+cli-loop [master] javascript> x + 2
+3.0
+
+cli-loop [master] javascript> var y = x + 2
+cli-loop [master] javascript> y
+3.0
+
+cli-loop [master] javascript> Listening for transport dt_socket at address: 5005
+
+Returning to javascript.
+
+Commands are: account, bindkey, exit/^d, help/?, javascript, password, set, testkey and tput
+cli-loop [master] shell>
+^C
+mslinn@kaiju cli-loop (master)
+```
+
 ### Upstream: `cli-loop`
 Some of the work for this project is done in the [cli-loop](https://github.com/mslinn/cli-loop) project.
 That means the [issues](https://github.com/mslinn/cli-loop/issues) filed with that project might also apply to this project.
