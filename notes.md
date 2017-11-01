@@ -13,6 +13,55 @@ I've written the [beginnings of a tutorial](https://mslinn.gitbooks.io/sbt-ether
 Lots more do to, so far it's just read-only interaction, need to funding an account, sending ether, calling methods that write state. 
 Eventually a development tutorial would make sense too.
 
+So, for me, I really want to continue what I am doing (or failing to do enough of), which is first and foremost about a 
+way of defining reproducible builds with a minimum of external dependencies 
+and rich tooling that would form as a sort of publication medium for accessible DIY Ethereum experiments. 
+I think `sbt-ethereum` is pretty good for that, or would be if I could get through my elaborate and growing list of TODOs.
+
+With respect to all of that, Nashorn integration might offer one very significant benefit: cross-platform Solidity compilers. 
+The [`solc`, the Solidity compiler](https://github.com/ethereum/solc-js) is written in C++, 
+but it has been compiled to [emscripten](https://en.wikipedia.org/wiki/Emscripten), 
+and the [Javascript version of solc](https://github.com/ethereum/solc-js) is in fact the most widely used, via 
+[Truffle](https://github.com/trufflesuite/truffle). 
+Currently, I require users to either use a so-far terrible Javascript-solc-as-a-web-service 
+[eth-netcompile](https://github.com/swaldman/eth-netcompile) 
+or to use the `ethSolidityInstallCompiler` command to install a compiler binary, which strikes me as ugly and fragile. 
+
+## Looking Back, Looking Forward
+Initially, the Ethereum JSON-RPC api supported compilation directly, nodes were also compilers. 
+But node developers objected to this, they did not want the maintenance burden and failed to standardize on what compilation 
+responses should look like, so this is effectively gone.
+On my TODO list is to make an sbt-ethereum installation an `eth-netcompile` server, 
+a wrapper of whatever compiler binaries it has installed. 
+This would allow me circumvent the scalability and performance problems of serving a very slow, CPU-bound task under Node.js' 
+single-threaded-by-default computation model.
+
+Alternatively, I could fix `eth-netcompile` to use one of the several newer features and libraries available in nodeland to support genuinely concurrent computation. 
+But a perhaps better solution than all of these would be to let `solc-js` serve as the basis for a JVM-native solidity compiler via Nashorn. 
+That's an experiment I've wanted to try for a long time, but it strikes me as risky whether it will work and perform acceptably, 
+and so far I've opted to leave my existing compiler hacks in place and work on other things.
+
+If this is something you are interested in, a `solc-jvm` would be a great project that would garner immediate interest from the Ethereum community. 
+To my disappointment, as we've discussed already, the `ethereumj` community has slacked off on maintaining the `solcJ` project I rely upon, 
+that embeds crossplatform binaries in a jar and serves as the basis for `ethSolidityInstallCompiler`.
+(That command name is going to change very soon.)
+The `EthereumJ` community would I think be really excited if a JVM-only solidity compiler became available. 
+
+The JVM Ethereum community as a whole is small, alas, but for those of us who believe in middleware and integrations, 
+it should grow larger, and the lack of a JVM solidity compiler is really a big roadblock.
+If you are interested in that, I'd strongly recommend it as perhaps the most compelling JVM-related calling card into Ethereumland.
+Again, in a static sense that's not saying so much, JVM Ethereum is small. 
+But in a dynamic sense, it may not always be.
+
+If what you'd like to do is work on a less clunky Ethereum command line than sbt-ethereum with JavaScript integration, 
+that's great too, and I'd be glad to show you around `consuela` to help you understand how to work with that library for 
+interacting with the Ethereum blockchain. 
+The significant piece of `sbt-ethereum`s command line functionality that is not just a wrapper around consuela is the repository, 
+which keeps track of deployed contract ABIs (in an `h2` database) and wallets (currently just as flat files, but I hope to change that). 
+That functionality could be abstracted out into some kind of library, and I'd be open to that, but I think it's probably too early to make that choice. 
+Since your command line won't be managing compilations and deployments, maybe a lighter weight, ABI-specific persistence store would make more sense.
+
+## Consuela
 The most basic piece of consuela is the [json-rpc client](https://github.com/swaldman/consuela/blob/master/src/main/scala/com/mchange/sc/v1/consuela/ethereum/jsonrpc/Client.scala).
 
 `Client.Simple(httpUrl)` is a somewhat incomplete Scala wrapper around `eth`
@@ -49,6 +98,7 @@ it's okay if you are careful, but the combination of unlocking accounts and expo
 `localhost` has cost people some money.
 But letting `geth` handle `keystore` and signing would reduce the complexity of what you have to do.
 
+## Random Thoughts
 *Mike:* Perhaps `Keystore.{walletForAddress, listAddresses,addNew(passPhrase)}`?
 
     Client.call(from, to, gas, gasPrice, value, data, blockNumber)
