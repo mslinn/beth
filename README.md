@@ -6,7 +6,7 @@
 [![GitHub version](https://badge.fury.io/gh/mslinn%2Fbeth.svg)](https://badge.fury.io/gh/mslinn%2Fbeth)
 
 Beth is a command line shell for Ethereum, like [eth and geth](https://www.ethereum.org/cli), 
-but written in Scala, with Java/JavaScript/Node.js integration. 
+but written in Scala, with Java/JavaScript integration. 
 Beth stands for "Better ETH"; it features auto-completion and colored help information.
 
 ## Running the Program
