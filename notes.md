@@ -24,6 +24,12 @@ The [Parity client](https://github.com/paritytech/parity) is written in Rust
 ([site](https://parity.io/), [wiki](https://github.com/paritytech/parity/wiki), 
 [Solidity](https://github.com/paritytech/parity/wiki/Smart-Contracts)).
 
+`solc`, [the original Solidity compiler](https://github.com/ethereum/solidity), is written in C++.
+It has been compiled to [emscripten](https://en.wikipedia.org/wiki/Emscripten), 
+and `solc-js`, the [Javascript version of solc](https://github.com/ethereum/solc-js), 
+is the most widely used version of the Solidity compiler, via 
+[Truffle](https://github.com/trufflesuite/truffle). 
+
 Wherever there is JVM-related ethereum development, compilation has been an annoyance. 
 People want compilation integrated into builds, want to generate and compile stubs, want to be able to recover ABIs if 
 deployed contracts from source, etc all of which required `solc`.
@@ -31,24 +37,19 @@ JVM people strongly prefer pure java solutions, so they do not need to install s
 A `solc-jvm` would provide that. 
 `solcJ` was popular within the tiny eth JVM community. 
 I don’t actually know anyone else in that community but me, but people I’ve interacted with on Twitter seem to have converged upon it too. 
-[`ethereumJ`](https://github.com/ethereum/ethereumj) seems for the moment to be maintained, but the abandonment of `solcJ` does not bode well for it.
+[`ethereumJ`](https://github.com/ethereum/ethereumj) seems for the moment to be maintained, 
+but the abandonment of `solcJ` does not bode well for it.
 
 Nashorn integration might offer one very significant benefit: cross-platform Solidity compilers. 
-`solc`, [the original Solidity compiler](https://github.com/ethereum/solidity), is written in C++.
-It has been compiled to [emscripten](https://en.wikipedia.org/wiki/Emscripten), 
-and `solc-js`, the [Javascript version of solc](https://github.com/ethereum/solc-js), 
-is the most widely used version of the Solidity compiler, via 
-[Truffle](https://github.com/trufflesuite/truffle). 
 Currently, `sbt-ethereum` users must either use a so-far terrible Javascript-solc-as-a-web-service 
 [eth-netcompile](https://github.com/swaldman/eth-netcompile) 
-or they must use the `ethSolidityInstallCompiler` SBT task to install a compiler binary, 
-which strikes me as ugly and fragile. 
+or they must use the `ethSolidityInstallCompiler` SBT task to install a compiler binary.
 
 *Mike:* Why not call the C++ of `solc` version from Java?
 
 *Steve:* The issue is trying hard not to require end-users to do a nontrivial install of solc. 
-With solcJ, an install was just one sbt command (which I might have automated into plugin startup). 
-That's exactly what I did, call out to the compiled c++ binaries. 
+With `solcJ`, an install was just one sbt command (which I might have automated into plugin startup). 
+That's exactly what I did, call out to the compiled C++ binaries. 
 I could just demand end users put the version of `solc` they want in the path, doing that would be hard for the people 
 I want to reach with my reproducible builds of experiments.
 For now, I'll continue updating my [own fork](https://github.com/swaldman/solcJ) of 
