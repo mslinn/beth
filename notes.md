@@ -1,7 +1,7 @@
 # Notes
 *Summary of the conversation between Steve and Mike*
 
-*Mike:* Yesterday I started working on a command line shell (beth) that does not require SBT. 
+*Mike:* Yesterday I started working on a command line shell (`beth`) that does not require SBT. 
 You can see the [work in progress](https://github.com/mslinn/beth).
 I'm encouraged by initial results.
 I'd be interested in your feedback.
@@ -10,16 +10,16 @@ I'd be interested in your feedback.
 I piggy-back a lot on `sbt` for stuff like smart tab completions, etc., and of course the development side. 
 But wth patience one could certainly write a lighter-weight interaction client.
 I've written the [beginnings of a tutorial](https://mslinn.gitbooks.io/sbt-ethereum/content/gitbook/tutorial.html#tutorial).
-Lots more do to, so far it's just read-only interaction, need to funding an account, sending ether, calling methods that write state. 
+Lots more do to, so far it's just read-only interaction, need to fund an account, send ether, call methods that write state, etc. 
 Eventually a development tutorial would make sense too.
 
-So, for me, I really want to continue what I am doing (or failing to do enough of), which is first and foremost about a 
-way of defining reproducible builds with a minimum of external dependencies 
+So, for me, I really want to continue what I am doing (or failing to do enough of), 
+which is first and foremost about a way of defining reproducible builds with a minimum of external dependencies 
 and rich tooling that would form as a sort of publication medium for accessible DIY Ethereum experiments. 
 I think `sbt-ethereum` is pretty good for that, or would be if I could get through my elaborate and growing list of TODOs.
 
 With respect to all of that, Nashorn integration might offer one very significant benefit: cross-platform Solidity compilers. 
-The [`solc`, the Solidity compiler](https://github.com/ethereum/solc-js) is written in C++, 
+The [`solc`, the Solidity compiler](https://github.com/ethereum/solidity) is written in C++, 
 but it has been compiled to [emscripten](https://en.wikipedia.org/wiki/Emscripten), 
 and the [Javascript version of solc](https://github.com/ethereum/solc-js) is in fact the most widely used, via 
 [Truffle](https://github.com/trufflesuite/truffle). 
@@ -43,7 +43,7 @@ and so far I've opted to leave my existing compiler hacks in place and work on o
 
 If this is something you are interested in, a `solc-jvm` would be a great project that would garner immediate interest from the Ethereum community. 
 To my disappointment, as we've discussed already, the `ethereumj` community has slacked off on maintaining the `solcJ` project I rely upon, 
-that embeds crossplatform binaries in a jar and serves as the basis for `ethSolidityInstallCompiler`.
+that embeds cross-platform binaries in a jar and serves as the basis for `ethSolidityInstallCompiler`.
 (That command name is going to change very soon.)
 The `EthereumJ` community would I think be really excited if a JVM-only solidity compiler became available. 
 
@@ -64,16 +64,26 @@ Since your command line won't be managing compilations and deployments, maybe a 
 ## Consuela
 The most basic piece of consuela is the [json-rpc client](https://github.com/swaldman/consuela/blob/master/src/main/scala/com/mchange/sc/v1/consuela/ethereum/jsonrpc/Client.scala).
 
+### Synchronous IO
 `Client.Simple(httpUrl)` is a somewhat incomplete Scala wrapper around `eth`
 (see [JSON-RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC)).
 Note that, to mimic the eth `jsonrpc` methods, I define an object called `eth`, so `eth_call` becomes `eth.call`.
 
 `Client.Simple` would be the easiest to get started with. 
-If you want fancy asynchronous IO, use `Client.Factory.createAsyncFactory()`, apply the `Factory` to the service URL to get the client, 
-and eventually try to close the `Factory`. 
+
+### Asynchronous IO
+If you want to use async IO, you need a factory.
+There is one predefined and implicitly available as `Client.Factory.Default`. 
+if you import this, `implicitly[Client.Factory]` should give you a factory, and you can use its `apply` function to a 
+URL to get an async eth jsonrpc client.
+
+A more complicated way of obtaining a factory for asynchronous IO, is to use `Client.Factory.createAsyncFactory()`, 
+apply the `Factory` to the service URL to get the client, and eventually try to close the `Factory`. 
+
 Jetty spawns tons of `Thread`s to manage its quasi-asynchronicity, thus the need for the otherwise annoying factory level.
 Probably best to start with `Cient.Simple`.
 
+### JSON-RPC
 The `json-rpc` stuff itself is fairly trivial, but when doing the most complicated things you do, such as
 deploying contracts, sending messages, etc, there's a fair amount of complexity about deciding how much to pay for gas 
 (`gasPrice`), and how much gas to offer (`gas`, or `gasLimit`). 
