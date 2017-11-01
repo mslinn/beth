@@ -18,6 +18,7 @@ For me, I want to continue working on defining reproducible builds with a minimu
 and rich tooling that would form the basis of a publication medium for accessible DIY Ethereum experiments. 
 I think `sbt-ethereum` is pretty good for that, or would be if I could get through my elaborate and growing list of TODOs.
 
+## Solidity Compilers
 Nashorn integration might offer one very significant benefit: cross-platform Solidity compilers. 
 `solc`, [the original Solidity compiler](https://github.com/ethereum/solidity), is written in C++.
 It has been compiled to [emscripten](https://en.wikipedia.org/wiki/Emscripten), 
@@ -28,6 +29,24 @@ Currently, `sbt-ethereum` users must either use a so-far terrible Javascript-sol
 [eth-netcompile](https://github.com/swaldman/eth-netcompile) 
 or they must use the `ethSolidityInstallCompiler` SBT task to install a compiler binary, 
 which strikes me as ugly and fragile. 
+
+*Mike:* Why not call the C++ of `solc` version from Java?
+
+*Steve:* The issue is trying hard not to require end-users to do a nontrivial install of solc. 
+With solcJ, an install was just one sbt command (which I might have automated into plugin startup). 
+That's exactly what I did, call out to the compiled c++ binaries. 
+I could just demand end users put the version of `solc` they want in the path, doing that would be hard for the people 
+I want to reach with my reproducible builds of experiments.
+(for now, i'll end up updating my [own fork of `solcJ`](https://github.com/swaldman/solcJ), I think.)
+
+*Mike:* The reference standard is `solc`, and the other versions lag a bit in terms of features, right?
+
+*Steve:* Really there is only one version, c++ `solc`, and the rest are just different packagings. 
+`solc` literally compiles to `solc-js` emscripten, as it would to some different processor. 
+`solcJ` just packages `solc` binaries; they all have feature parity with the `solc` binaries of the same version.
+
+The downloads are here: https://github.com/ethereum/solidity/releases. The Windows version provides 2 exe files and a dll. The Linux version is statically linked. I don't see a Mac version there, but brew works well
+
 
 ## Looking Back, Looking Forward
 Initially, the Ethereum JSON-RPC api supported compilation directly, nodes were also compilers. 
