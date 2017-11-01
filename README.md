@@ -35,6 +35,8 @@ The debug setup persists each time `rerun` relaunches the program.
 
 ### Upstream: `cli-loop`
 Some of the work for this project is done in the [cli-loop](https://github.com/mslinn/cli-loop) project.
+That means the [issues](https://github.com/mslinn/cli-loop/issues) filed with that project might also apply to this project.
+
 Sometimes when that project is updated, you might want to import those changes into this project.
 Some changes are likely to be specific to that project, so take care sorting out the relevant changes.
 
