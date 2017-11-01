@@ -166,6 +166,9 @@ class MainLoop(val shell: Shell) extends ShellLike {
     try {
       reader.readLine(prompt)
     } catch {
+      case _: NullPointerException => //  Error while finding completion candidates
+        ""
+
       case _: UserInterruptException =>
         printRichInfo("Press Control-D to exit.")
         ""
