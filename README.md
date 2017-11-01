@@ -25,7 +25,23 @@ Use it after modifying the source code.
 $ bin/run -j
 ```
 
+## Developers
+Some of the work for this project is done in the [cli-loop](https://github.com/mslinn/cli-loop) project.
+Sometimes when that project is updated, you might want to import those changes into this project.
+Some changes are likely to be specific to that project, so take care sorting out the relevant changes.
+
+    git remote add upstream https://github.com/mslinn/cli-loop
+    git fetch upstream
+    git checkout master
+    
+    # Figure out what changes you want to keep or discard
+    
+    git merge upstream/master
+    git push origin master
+    
+For more information on syncing forks, [see this](https://help.github.com/articles/syncing-a-fork/).
+    
 ## Published Binary Executables
-Yes, this is the plan.
+Yes, [this is the plan](https://github.com/mslinn/beth/issues/3).
 Wanna help make it happen?
 Jump in and submit a pull request!
