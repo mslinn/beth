@@ -20,14 +20,15 @@ and rich tooling that would form as a sort of publication medium for accessible 
 I think `sbt-ethereum` is pretty good for that, or would be if I could get through my elaborate and growing list of TODOs.
 
 With respect to all of that, Nashorn integration might offer one very significant benefit: cross-platform Solidity compilers. 
-The [`solc`, the Solidity compiler](https://github.com/ethereum/solidity) is written in C++, 
-but it has been compiled to [emscripten](https://en.wikipedia.org/wiki/Emscripten), 
-and `solc-js`, the [Javascript version of solc](https://github.com/ethereum/solc-js) 
+`solc`, [the original Solidity compiler](https://github.com/ethereum/solidity), is written in C++.
+It has been compiled to [emscripten](https://en.wikipedia.org/wiki/Emscripten), 
+and `solc-js`, the [Javascript version of solc](https://github.com/ethereum/solc-js), 
 is the most widely used version of the Solidity compiler, via 
 [Truffle](https://github.com/trufflesuite/truffle). 
-Currently, I require users to either use a so-far terrible Javascript-solc-as-a-web-service 
+Currently, `sbt-ethereum` users must either use a so-far terrible Javascript-solc-as-a-web-service 
 [eth-netcompile](https://github.com/swaldman/eth-netcompile) 
-or to use the `ethSolidityInstallCompiler` command to install a compiler binary, which strikes me as ugly and fragile. 
+or they must use the `ethSolidityInstallCompiler` SBT task to install a compiler binary, 
+which strikes me as ugly and fragile. 
 
 ## Looking Back, Looking Forward
 Initially, the Ethereum JSON-RPC api supported compilation directly, nodes were also compilers. 
@@ -38,7 +39,8 @@ a wrapper of whatever compiler binaries it has installed.
 This would allow me circumvent the scalability and performance problems of serving a very slow, CPU-bound task under Node.js' 
 single-threaded-by-default computation model.
 
-Alternatively, I could fix `eth-netcompile` to use one of the several newer features and libraries available in nodeland to support genuinely concurrent computation. 
+Alternatively, I could fix `eth-netcompile` to use one of the several newer features and libraries available in 
+nodeland to support genuinely concurrent computation. 
 But a perhaps better solution than all of these would be to let `solc-js` serve as the basis for a JVM-native solidity compiler via Nashorn. 
 That's an experiment I've wanted to try for a long time, but it strikes me as risky whether it will work and perform acceptably, 
 and so far I've opted to leave my existing compiler hacks in place and work on other things.
