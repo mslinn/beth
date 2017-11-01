@@ -41,13 +41,14 @@ For now, I'll continue updating my [own fork](https://github.com/swaldman/solcJ)
 [`solcJ`](https://github.com/ether-camp/solcJ).
 
 *Mike:* The reference standard is `solc`, and the other versions lag a bit in terms of features, right?
+The downloads are [here](https://github.com/ethereum/solidity/releases).
+The Windows version provides 2 exe files and a dll. 
+The Linux version is statically linked. 
+I don't see a Mac version there, but brew works well
 
 *Steve:* Really there is only one version, c++ `solc`, and the rest are just different packagings. 
 `solc` literally compiles to `solc-js` emscripten, as it would to some different processor. 
 `solcJ` just packages `solc` binaries; they all have feature parity with the `solc` binaries of the same version.
-
-The downloads are here: https://github.com/ethereum/solidity/releases. The Windows version provides 2 exe files and a dll. The Linux version is statically linked. I don't see a Mac version there, but brew works well
-
 
 ## Looking Back, Looking Forward
 Initially, the Ethereum JSON-RPC api supported compilation directly, nodes were also compilers. 
