@@ -24,6 +24,14 @@ $ bin/run -j
 ```
 
 ## Developers
+### Automating the Edit / Compile / Debug Loop
+The `bin/rerun` script is handy when you want to see the changes made to the running program.
+Press `Control-d` to exit the program, and it will automatically be rebuilt with the latest changes and rerun.
+
+Both the `bin/run` and `bin/rerun` scripts enable remote debugging on port 5005, 
+which is IntelliJ IDEA's default remote debugging port.
+The debug setup persists each time `rerun` relaunches the program.
+
 ### Upstream: `cli-loop`
 Some of the work for this project is done in the [cli-loop](https://github.com/mslinn/cli-loop) project.
 Sometimes when that project is updated, you might want to import those changes into this project.
@@ -40,14 +48,6 @@ Some changes are likely to be specific to that project, so take care sorting out
     
 For more information on syncing forks, [see this](https://help.github.com/articles/syncing-a-fork/).
     
-### Automating the Edit / Compile / Debug Loop
-The `bin/rerun` script is handy when you want to see the changes made to the running program.
-Press `Control-d` to exit the program, and it will automatically be rebuilt with the latest changes and rerun.
-
-Both the `bin/run` and `bin/rerun` scripts enable remote debugging on port 5005, 
-which is IntelliJ IDEA's default remote debugging port.
-The debug setup persists each time `rerun` relaunches the program.
-
 ## Published Binary Executables
 Yes, [this is the plan](https://github.com/mslinn/beth/issues/3).
 Wanna help make it happen?
