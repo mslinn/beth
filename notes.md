@@ -37,7 +37,8 @@ With solcJ, an install was just one sbt command (which I might have automated in
 That's exactly what I did, call out to the compiled c++ binaries. 
 I could just demand end users put the version of `solc` they want in the path, doing that would be hard for the people 
 I want to reach with my reproducible builds of experiments.
-(for now, i'll end up updating my [own fork of `solcJ`](https://github.com/swaldman/solcJ), I think.)
+For now, I'll continue updating my [own fork](https://github.com/swaldman/solcJ) of 
+[`solcJ`](https://github.com/ether-camp/solcJ).
 
 *Mike:* The reference standard is `solc`, and the other versions lag a bit in terms of features, right?
 
