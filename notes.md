@@ -10,7 +10,8 @@ I'd be interested in your feedback.
 I piggy-back a lot on `sbt` for stuff like smart tab completions, etc., and of course the development side. 
 But wth patience one could certainly write a lighter-weight interaction client.
 I've written the [beginnings of a tutorial](https://mslinn.gitbooks.io/sbt-ethereum/content/gitbook/tutorial.html#tutorial).
-Lots more do to, so far it's just read-only interaction, need to fund an account, send ether, call methods that write state, etc. 
+Lots more do to, so far it's just read-only interaction, need to fund an account, send ether, 
+call methods that write state, etc. 
 Eventually a development tutorial would make sense too.
 
 So, for me, I really want to continue what I am doing (or failing to do enough of), 
@@ -21,7 +22,8 @@ I think `sbt-ethereum` is pretty good for that, or would be if I could get throu
 With respect to all of that, Nashorn integration might offer one very significant benefit: cross-platform Solidity compilers. 
 The [`solc`, the Solidity compiler](https://github.com/ethereum/solidity) is written in C++, 
 but it has been compiled to [emscripten](https://en.wikipedia.org/wiki/Emscripten), 
-and the [Javascript version of solc](https://github.com/ethereum/solc-js) is in fact the most widely used, via 
+and `solc-js`, the [Javascript version of solc](https://github.com/ethereum/solc-js) 
+is the most widely used version of the Solidity compiler, via 
 [Truffle](https://github.com/trufflesuite/truffle). 
 Currently, I require users to either use a so-far terrible Javascript-solc-as-a-web-service 
 [eth-netcompile](https://github.com/swaldman/eth-netcompile) 
