@@ -40,7 +40,7 @@ object MainLoop {
   protected def gitRepo: Repository = FileRepositoryBuilder.create(new java.io.File(".git/").getAbsoluteFile)
 
   // todo store this value into path new `reader` property of `Shell`
-  protected def reader(parser: Parser, terminal: Terminal): LineReader = {
+  def reader(parser: Parser, terminal: Terminal): LineReader = {
     val lineReader: LineReader = LineReaderBuilder.builder
       .terminal(terminal)
       .completer(shellManager.topShell.completer)
@@ -56,7 +56,7 @@ object MainLoop {
   }
 }
 
-class MainLoop(val shell: Shell) extends ShellLike {
+class MainLoop(val shell: Shell) extends MainLoopLike {
   import com.micronautics.cli.MainLoop._
 
   val cNodes: CNodes = shell.cNodes
