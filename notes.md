@@ -18,6 +18,11 @@ For me, I want to continue working on defining reproducible builds with a minimu
 and rich tooling that would form the basis of a publication medium for accessible DIY Ethereum experiments. 
 I think `sbt-ethereum` is pretty good for that, or would be if I could get through my elaborate and growing list of TODOs.
 
+For Ethereum, JavaScript, Go and Python dominate. 
+The [Parity client](https://github.com/paritytech/parity) is written in Rust 
+([site](https://parity.io/), [wiki](https://github.com/paritytech/parity/wiki), 
+[Solidity](https://github.com/paritytech/parity/wiki/Smart-Contracts)).
+
 ## Solidity Compilers
 Nashorn integration might offer one very significant benefit: cross-platform Solidity compilers. 
 `solc`, [the original Solidity compiler](https://github.com/ethereum/solidity), is written in C++.
@@ -49,10 +54,6 @@ I don't see a Mac version there, but brew works well
 *Steve:* Really there is only one version, c++ `solc`, and the rest are just different packagings. 
 `solc` literally compiles to `solc-js` emscripten, as it would to some different processor. 
 `solcJ` just packages `solc` binaries; they all have feature parity with the `solc` binaries of the same version.
-
-For Ethereum, JavaScript, Go and Python dominate. 
-The [Parity client](https://github.com/paritytech/parity) is written in Rust 
-([site](https://parity.io/), [wiki](https://github.com/paritytech/parity/wiki)).
 
 ## Looking Back, Looking Forward
 Initially, the Ethereum JSON-RPC api supported compilation directly, nodes were also compilers. 
