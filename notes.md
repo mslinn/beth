@@ -50,11 +50,15 @@ I don't see a Mac version there, but brew works well
 `solc` literally compiles to `solc-js` emscripten, as it would to some different processor. 
 `solcJ` just packages `solc` binaries; they all have feature parity with the `solc` binaries of the same version.
 
+For Ethereum, JavaScript, Go and Python dominate. 
+The [Parity client](https://github.com/paritytech/parity) is written in Rust 
+([site](https://parity.io/), [wiki](https://github.com/paritytech/parity/wiki)).
+
 ## Looking Back, Looking Forward
 Initially, the Ethereum JSON-RPC api supported compilation directly, nodes were also compilers. 
 But node developers objected to this, they did not want the maintenance burden and failed to standardize on what compilation 
 responses should look like, so this is effectively gone.
-On my TODO list is to make an sbt-ethereum installation an `eth-netcompile` server, 
+On my TODO list is to make an `sbt-ethereum` installation an `eth-netcompile` server, 
 a wrapper of whatever compiler binaries it has installed. 
 This would allow me circumvent the scalability and performance problems of serving a very slow, CPU-bound task under Node.js' 
 single-threaded-by-default computation model.
