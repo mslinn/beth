@@ -1,12 +1,12 @@
 # Beth - A Better Command Line Interface to Ethereum
 
-<img src='https://raw.githubusercontent.com/mslinn/beth/gh-pages/images/queenElizabeth.jpg' align='right' width='33%'>
-
 [![Build Status](https://travis-ci.org/mslinn/beth.svg?branch=master)](https://travis-ci.org/mslinn/beth)
 [![GitHub version](https://badge.fury.io/gh/mslinn%2Fbeth.svg)](https://badge.fury.io/gh/mslinn%2Fbeth)
 
 Beth is a command-line for Ethereum, like eth and geth, but written in Scala.
 Beth stands for "Better ETH"; it features auto-completion and colored help information.
+
+[![YouTube Demo](https://www.micronauticsresearch.com/images/bethIntro.png)](https://www.youtube.com/watch?v=HGPFR1gzrXs)
 
 ## Running the Program
 The `bin/run` Bash script assembles this project into a fat jar and runs it.
@@ -22,6 +22,8 @@ Use it after modifying the source code.
 ```
 $ bin/run -j
 ```
+
+<img src='https://raw.githubusercontent.com/mslinn/beth/gh-pages/images/queenElizabeth.jpg' align='right' width='33%'>
 
 ## Published Binary Executables
 Yes, this is the plan.
