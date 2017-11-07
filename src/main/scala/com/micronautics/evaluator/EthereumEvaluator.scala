@@ -1,7 +1,17 @@
 package com.micronautics.evaluator
 
+import org.ethereum.facade.{Ethereum, EthereumFactory}
+import org.ethereum.samples.CreateContractSample
+
 class EthereumEvaluator extends Evaluator {
-  override def init(): EvaluatorInfo = {
+ val ethereum: Ethereum = EthereumFactory.createEthereum()
+
+  def getBestBlock: String = ethereum.getBlockchain.getBestBlock.getNumber.toString
+
+  def init(): EvaluatorInfo = {
+    // See https://github.com/ethereum/ethereumj/blob/develop/ethereumj-core/src/main/java/org/ethereum/samples/CreateContractSample.java#L55-L59
+    new CreateContractSample().onSyncDone()
+
     // todo perform session initialization
 
     info
@@ -22,10 +32,10 @@ class EthereumEvaluator extends Evaluator {
 
 
   protected def info = EvaluatorInfo(
-    engineName = "Ethereum library name goes here",
-    engineVersion = "Ethereum library version goes here",
-    evaluatorName = "Ethereum library name goes here",
-    evaluatorVersion = s"Ethereum library version goes here | Micronautics v0.1.0",
+    engineName = "Ethereum library: EthereumJ",
+    engineVersion = "Ethereum library 1.6.3-RELEASE",
+    evaluatorName = "EthereumEvaluator",
+    evaluatorVersion = s"Ethereum v0.2.0",
     names = List("shell", "eth")
   )
 }
