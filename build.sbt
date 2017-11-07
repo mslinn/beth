@@ -35,23 +35,26 @@ javacOptions ++= Seq(
 )
 
 resolvers ++= Seq(
-  "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+  "EthereumJ repository" at "https://dl.bintray.com/ethereum/maven",
+  "Sonatype snapshots"   at "https://oss.sonatype.org/content/repositories/snapshots"
 )
 
 libraryDependencies ++= Seq(
-  "com.mchange"    %% "consuela"              % "0.0.3-SNAPSHOT" withSources() changing(),
-  "com.mchange"    %% "mchange-commons-scala" % "0.4.3-SNAPSHOT" withSources() changing(),
-  "com.mchange"    %% "mlog-scala"            % "0.3.9"          withSources(),
-  "com.mchange"    %% "literal"               % "0.0.2-SNAPSHOT" withSources() changing(),
-  "com.mchange"    %% "danburkert-continuum"  % "0.4.0-SNAPSHOT" withSources() changing(),
-  "com.mchange"    %  "c3p0"                  % "0.9.5.2"        withSources(),
-  "com.h2database" %  "h2"                    % "1.4.192"        withSources(),
+//  "com.mchange"       %% "consuela"              % "0.0.3-SNAPSHOT"     withSources() changing(),
+//  "com.mchange"       %% "mchange-commons-scala" % "0.4.3-SNAPSHOT"     withSources() changing(),
+//  "com.mchange"       %% "mlog-scala"            % "0.3.9"              withSources(),
+//  "com.mchange"       %% "literal"               % "0.0.2-SNAPSHOT"     withSources() changing(),
+//  "com.mchange"       %% "danburkert-continuum"  % "0.4.0-SNAPSHOT"     withSources() changing(),
+//  "com.mchange"       %  "c3p0"                  % "0.9.5.2"            withSources(),
+//  "com.h2database"    %  "h2"                    % "1.4.192"            withSources(),
   //
-  "io.circe"          %% "circe-config"     % "0.3.0" withSources(),
-  "io.circe"          %% "circe-generic"    % "0.8.0" withSources(),
-  "org.jline"         %  "jline"            % "3.5.1" withSources(),
-  "org.eclipse.jgit"  %  "org.eclipse.jgit" % "4.9.0.201710071750-r" withSources(),
-  "ch.qos.logback"    %  "logback-classic"  % "1.2.3",
+  "org.ethereum"      %  "ethereumj-core"        % "1.6.3-RELEASE"       withSources(),
+  //
+  "ch.qos.logback"    %  "logback-classic"       % "1.2.3",
+  "io.circe"          %% "circe-config"          % "0.3.0"                withSources(),
+  "io.circe"          %% "circe-generic"         % "0.8.0"                withSources(),
+  "org.jline"         %  "jline"                 % "3.5.1"                withSources(),
+  "org.eclipse.jgit"  %  "org.eclipse.jgit"      % "4.9.0.201710071750-r" withSources(),
   //
   "org.scalatest"     %% "scalatest"        % "3.0.3" % Test withSources(),
   "junit"             %  "junit"            % "4.12"  % Test

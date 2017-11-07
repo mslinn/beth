@@ -5,6 +5,7 @@
 
 Beth is a command-line for Ethereum, like eth and geth, but written in Scala.
 Beth stands for "Better ETH"; it features auto-completion and colored help information.
+This project uses [EthereumJ](https://github.com/ethereum/ethereumj).
 
 [![YouTube Demo](https://www.micronauticsresearch.com/images/bethIntro.png)](https://www.youtube.com/watch?v=HGPFR1gzrXs)
 
