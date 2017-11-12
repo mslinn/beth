@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/mslinn/beth.svg?branch=master)](https://travis-ci.org/mslinn/beth)
 [![GitHub version](https://badge.fury.io/gh/mslinn%2Fbeth.svg)](https://badge.fury.io/gh/mslinn%2Fbeth)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 Beth is a command-line for Ethereum, like eth and geth, but written in Scala.
 Beth stands for "Better ETH"; it features auto-completion and colored help information.
