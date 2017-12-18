@@ -39,3 +39,17 @@ Press `Control-d` to exit the program, and it will automatically be rebuilt with
 Both the `bin/run` and `bin/rerun` scripts enable remote debugging on port 5005, 
 which is IntelliJ IDEA's default remote debugging port.
 The debug setup persists each time `rerun` relaunches the program.
+
+## Sponsorship and Proofs of Concept
+<img src='https://www.micronauticsresearch.com/images/robotCircle400shadow.png' align='right' width='15%'>
+
+To date this project has been sponsored by [Micronautics Research Corporation](http://www.micronauticsresearch.com/),
+the company that delivers online Scala training via [ScalaCourses.com](http://www.ScalaCourses.com).
+
+The only way to provide value is to serve customers.
+We actively seek opportunities to develop blockchain-related prototypes and proofs of concept.
+We would be happy to [present our work and discuss sponsorship opportunities](https://www.micronauticsresearch.com/portfolio.html#ethereum) for our open-source libraries.
+Please [contact us](mailto:sales@micronauticsresearch.com) to discuss.
+
+## License
+This software is published under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html).
